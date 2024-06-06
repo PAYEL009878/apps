@@ -2,7 +2,29 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
+  //object with for off loop
+ /* const people =[
+    { name:"Payel" ,age:"20"},
+    {name:"Riya" ,age:"20"},
+    {name:"Neha" ,age:"21"}
+  ];
+for (let item of people)
+  {
+    console.log(item.name) 
+  }
+    */
+   /*
+   [object with for each loop]
+   const people =[
+    { name:"Payel" ,age:"20"},
+    {name:"Riya" ,age:"21"},
+    {name:"Neha" ,age:"22"}
+  ];
+  people.forEach((person) =>{
+    console.log(person.age)
+  });
+  */
+    return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
