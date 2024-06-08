@@ -1,1 +1,1 @@
-# apps
+# Teckat-intership
