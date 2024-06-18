@@ -1,19 +1,32 @@
-import React from "react"
-import {useForm} from "react-hook-form";
-import { IStudent } from "../interfaces/student";
+import React from "react";
+import { IStudent } from "../interface/student";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-const createStudent : React.FC = () => {
- const {
+const CreateStudent: React.FC = () => {
+  const navigate = useNavigate();
+  const {
     register,
     handleSubmit,
-    formState:{errors},
- } =useForm<IStudent>({mode: "all"});
- const createNewStudent = (data: IStudent)=>{
+    formState: { errors },
+  } = useForm<IStudent>({ mode: "all" });
+
+  const createNewStudent = (data: IStudent) => {
     console.log(data);
- };
-    return(
-        <>
-   <div className="create_student_section">
+localStorage.setItem("students",JSON.stringify(data));
+    // const students: IStudent[] = JSON.parse(
+    //   localStorage.getItem("students") as string
+    // );
+    // data._id = (students.length + 1).toString();
+
+    // students.push(data);
+    // localStorage.setItem("students", JSON.stringify(students));
+    // navigate("/student/student-details");
+  };
+  return (
+    <>
+      <div className="create_student_section">
+        Lorem, ipsum.
         <form onSubmit={handleSubmit(createNewStudent)}>
           <div>
             <label htmlFor="name"></label>
@@ -35,6 +48,7 @@ const createStudent : React.FC = () => {
               id="age"
               {...register("age", {
                 required: { value: true, message: "Age is required" },
+                valueAsNumber: true,
               })}
             />
             <div className="error_message">{errors.age?.message}</div>
@@ -47,6 +61,7 @@ const createStudent : React.FC = () => {
               id="phone"
               {...register("phone", {
                 required: { value: true, message: "Phone is required" },
+                valueAsNumber: true,
               })}
             />
             <div className="error_message">{errors.phone?.message}</div>
@@ -68,8 +83,10 @@ const createStudent : React.FC = () => {
             Submit
           </button>
         </form>
-      </div>
-</>
-    );
+      </div>
+    </>
+  );
 };
-export default createStudent;
+
+
+export default CreateStudent;
